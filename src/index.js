@@ -1,5 +1,5 @@
 import './style.css';
-import { board, project, todoItem } from './todoLogic';
+import { board as Board, project as Project, todoItem as TodoItem } from './todoLogic';
 import { renderBoard, renderProjDisplay, renderSideBar } from './domLogic';
 
 function getUpstreamID(event, className) {
@@ -15,9 +15,9 @@ let appBoard;
 
 if (!localStorage.getItem("appboard")) {
 
-    appBoard = new board();
+    appBoard = new Board();
     appBoard.projectList[0].title = "Example Project";
-    appBoard.projectList[0].todoList.push(new todoItem("Practice Guitar", "Minor pentatonic exercise", 0));
+    appBoard.projectList[0].todoList.push(new TodoItem("Practice Guitar", "Minor pentatonic exercise", 0));
 } else {
     appBoard = JSON.parse(localStorage.getItem("appboard"));
 }
@@ -58,7 +58,7 @@ contentDiv.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
         if (e.target.classList.contains("addButton")) {
             const pInd = getUpstreamID(e, "projectOuter");
-            projList[pInd].todoList.push(new todoItem());
+            projList[pInd].todoList.push(new TodoItem());
             renderDOM();
         } else if (e.target.classList.contains("dueDate")) {
             const dateInput = document.createElement("input");
@@ -95,7 +95,7 @@ contentDiv.addEventListener("click", (e) => {
 navDiv.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
         if (e.target.classList.contains("addProj")) {
-            appBoard.projectList.push(new project());
+            appBoard.projectList.push(new Project());
             appBoard.selected = "all";
         } else {
             appBoard.selected = e.target.id;

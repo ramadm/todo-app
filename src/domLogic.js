@@ -1,5 +1,5 @@
 import 'material-symbols';
-import { compareAsc, endOfDay, format, formatDistance } from "date-fns";
+import { endOfDay, formatDistance } from "date-fns";
 
 function todoElem(todo, todoID) {
     const todoDiv = document.createElement("div");

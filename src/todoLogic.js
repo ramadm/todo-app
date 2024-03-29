@@ -1,6 +1,6 @@
 import { add } from "date-fns";
 
-export class todoItem {
+export class TodoItem {
     constructor(title = "", content = "", priority = 0) {
         this.title = title;
         this.content = content;
@@ -9,15 +9,15 @@ export class todoItem {
     }
 }
 
-export class project {
+export class Project {
     constructor(title = "", todoList = []) {
         this.title = title;
         this.todoList = todoList;
     }      
 }
 
-export class board {
-    constructor(pList=[new project()], selected="all") {
+export class Board {
+    constructor(pList=[new Project()], selected="all") {
         this.projectList = pList
         this.selected = selected
     }
